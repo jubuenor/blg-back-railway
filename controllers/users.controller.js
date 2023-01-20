@@ -28,8 +28,8 @@ exports.create = (req,res)=>{
     let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
     let user = new User({
         name: req.body.name,
-        last_name: req.body.last_name,
-        username: req.body.password,
+        last_name: req.body.username,
+        username: req.body.username,
         password: hashedpass,
         likes:[]
     });
