@@ -73,8 +73,8 @@ exports.update = (req,res)=>{
             res.json(response)
             return;
         }
-        Posts.updateMany({ $where:()=>this.user.id===req.params.id},{$set: {user:{id:req.params.id,name:req.body.name,last_name:req.body.last_name,username:req.body.username}}})
-        .then((response)=>{
+        Posts.updateMany({ "user.id":{$eq:req.params.id}},{$set: {user:{id:req.params.id,name:req.body.name,last_name:req.body.last_name,username:req.body.username}}})
+        .then((res)=>{
             response.succ=true,
             response.msg = "User successfully saved"
         }).catch((error)=>{
